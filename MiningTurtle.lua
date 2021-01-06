@@ -12,6 +12,64 @@ function MiningTurtle:new (o, turtle, size)
     return o
 end
 
+function MiningTurtle:goBackToOrigin ()
+    while (self.z ~= 0) 
+    do
+        turtle.up()
+        self.z = self.z + 1
+    end
+    if (self.x > 0) then
+        if (self.direction == 1) then
+            turtle.moveRight()
+            turtle.moveRight()
+        elseif (self.direction ~= 3) then
+            turtle.moveRight()
+        end
+        while (self.x > 0)
+        do
+            self:forward()
+            self.x = self.x - 1
+        end
+    elseif (self.x < 0) then
+        if (self.direction == 3) then
+            turtle.moveRight()
+            turtle.moveRight()
+        elseif (self.direction ~= 1) then
+            turtle.moveRight()
+        end
+        while (self.x > 0)
+        do
+            self:forward()
+            self.x = self.x + 1
+        end
+    end
+    if (self.y > 0) then
+        if (self.direction == 0) then
+            turtle.moveRight()
+            turtle.moveRight()
+        elseif (self.direction ~= 2) then
+            turtle.moveRight()
+        end
+        while (self.y > 0)
+        do
+            self:forward()
+            self.y = self.y - 1
+        end
+    elseif (self.y < 0) then
+        if (self.direction == 2) then
+            turtle.moveRight()
+            turtle.moveRight()
+        elseif (self.direction ~= 0) then
+            turtle.moveRight()
+        end
+        while (self.y < 0)
+        do
+            self:forward()
+            self.y = self.y + 1
+        end
+    end
+end
+
 function MiningTurtle:getLocation ()
     print("Location: ", self.x, self.y, self.z, "\tDirection:", self.direction)
 end
@@ -21,8 +79,8 @@ function MiningTurtle:isFull()
         turtle.select(16)
         turtle.digUp()
         turtle.placeUp()
-        for selectslot=0, 15 do
-            turtle.selectslot(selectslot)
+        for selectslot=1, 15, 1 do
+            turtle.select(selectslot)
             turtle.dropUp()
         end
         turtle.select(16)
