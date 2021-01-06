@@ -44,9 +44,9 @@ end
 
 function mine(size)
     turtle.dig()
-    for i = size, 1, -1
+    for i = size, 0, -1
     do
-        for i = size, 1, -1
+        for i = size, 0, -1
         do
             forward()
         end
