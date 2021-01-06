@@ -49,9 +49,8 @@ function mine(size)
         for i = size, 1, -1
         do
             forward()
-            turtle.dig()
         end
-        turtle.zigZagTurn()
+        zigZagTurn()
     end
 end
 
