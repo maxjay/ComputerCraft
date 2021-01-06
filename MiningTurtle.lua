@@ -174,9 +174,6 @@ function MiningTurtle:snakeMine ()
 end
 
 mt = MiningTurtle:new(nil, turtle, 4)
-mt:forward()
-mt:forward()
-mt:down()
-mt.z = mt.z - 1
+mt:snakeMineLayer()
 mt:goBackToOrigin()
 mt:getLocation()
