@@ -27,7 +27,7 @@ def dig():
         coordsToDig[0] -= 1
     elif direction == 1:
         coordsToDig[0] += 1
-    print("Digging:", coordsToDig)
+    #print("Digging:", coordsToDig)
     if coordsToDig not in coords:
         print("Inefficient!!!")
     else:
@@ -96,15 +96,16 @@ def snakeMine(size=16):
         dig()
 
 def snakeMineLayer(size=16):
+    flip = False
     for i in range(size//2):
-        flip = False
         for j in range(size, 1, -1):
-            location()
+            print(j)
+            #location()
             forward()
         snakeTurn(flip)
         flip = not flip
         for j in range(size, 1, -1):
-            location()
+            #location()
             forward()
         if i != (size//2)-1:
             snakeTurn(flip)
