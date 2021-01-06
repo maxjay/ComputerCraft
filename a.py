@@ -98,8 +98,9 @@ def snakeMine(size=16):
 def snakeMineLayer(size=16):
     flip = False
     for i in range(size//2):
+        print("==========", i)
         for j in range(size, 1, -1):
-            print(j)
+            print("========", j)
             #location()
             forward()
         snakeTurn(flip)

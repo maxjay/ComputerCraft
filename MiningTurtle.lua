@@ -62,16 +62,16 @@ end
 
 function MiningTurtle:snakeMineLayer ()
     flip = false
-    for i = 0, math.floor(self.size/2), 1
+    for i = 0, math.floor(self.size/2) - 1, 1
     do
-        for j = self.size, 1, -1
+        for j = self.size, 2, -1
         do 
             print(j)
             self:forward()
         end
         self:snakeTurn(flip)
         flip = not flip
-        for j = self.size, 1, -1
+        for j = self.size, 2, -1
         do 
             self:forward()
         end
