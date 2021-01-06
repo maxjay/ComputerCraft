@@ -18,7 +18,7 @@ function MiningTurtle:goBackToOrigin ()
         turtle.up()
         self.z = self.z + 1
     end
-    if (self.x > 1) then
+    if (self.x > 0) then
         if (self.direction == 1) then
             self:turnRight()
             self:turnRight()
@@ -27,12 +27,11 @@ function MiningTurtle:goBackToOrigin ()
         elseif (self.direction == 2) then
             self:turnRight()
         end
-        while (self.x > 0)
+        while (self.x ~= 0)
         do
             self:forward()
-            self.x = self.x - 1
         end
-    elseif (self.x < 1) then
+    elseif (self.x < 0) then
         if (self.direction == 3) then
             self:turnRight()
             self:turnRight()
@@ -41,13 +40,12 @@ function MiningTurtle:goBackToOrigin ()
         elseif (self.direction == 0) then
             self:turnRight()
         end
-        while (self.x < 0)
+        while (self.x ~= 0)
         do
             self:forward()
-            self.x = self.x + 1
         end
     end
-    if (self.y > 1) then
+    if (self.y > 0) then
         if (self.direction == 0) then
             self:turnRight()
             self:turnRight()
@@ -56,12 +54,11 @@ function MiningTurtle:goBackToOrigin ()
         elseif (self.direction == 1) then
             self:turnRight()
         end
-        while (self.y > 0)
+        while (self.y ~= 0)
         do
             self:forward()
-            self.y = self.y - 1
         end
-    elseif (self.y < 1) then
+    elseif (self.y < 0) then
         if (self.direction == 2) then
             self:turnRight()
             self:turnRight()
@@ -70,10 +67,9 @@ function MiningTurtle:goBackToOrigin ()
         elseif (self.direction == 3) then
             self:turnRight()
         end
-        while (self.y < 1)
+        while (self.y ~= 0)
         do
             self:forward()
-            self.y = self.y + 1
         end
     end
 end
