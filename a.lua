@@ -31,7 +31,7 @@ function zigZagTurn(flip)
         moveRight()
         forward()
         moveRight()
-    else then
+    else
         moveLeft()
         forward()
         moveLeft()
@@ -40,14 +40,18 @@ end
 
 function mine(size)
     flip = true
-    for i = 2*(size-1), 1, -1
+    for i = size -1, 1, -1
     do
+        forward()
+    end
+    for i = size - 1, 1, -1
+    do
+        zigZagTurn(flip)
         for i = size - 1, 1, -1
         do
             forward()
         end
-    zigZagTurn(flip)
-    flip = not flip
+        flip = not flip
     end
 end
 
