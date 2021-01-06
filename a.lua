@@ -63,6 +63,7 @@ function depositIntoChest()
 end
 
 print("Initialising")
+forward()
 loc()
 forward()
 loc()
