@@ -16,10 +16,27 @@ function MiningTurtle:getLocation ()
     print("Location: ", self.x, self.y, self.z, "\tDirection:", self.direction)
 end
 
+function MiningTurtle:isFull() 
+    for i = 1, 16 do
+        turtle.getItemCount(i)
+        if turtle.getItemCount(i) == 0 then
+            return true
+        end
+    end
+    return false
+end
+
+function MiningTurtle:dropOff()
+    print("DROP OFF")
+end
+
 function MiningTurtle:dig ()
     turtle.dig()
+    if self:isFull() then self:dropOff()
     turtle.digUp()
+    if self:isFull() then self:dropOff()
     turtle.digDown()
+    if self:isFull() then self:dropOff()
 end
 
 function MiningTurtle:forward ()
