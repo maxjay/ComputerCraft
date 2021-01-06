@@ -17,26 +17,26 @@ function MiningTurtle:getLocation ()
 end
 
 function MiningTurtle:isFull() 
-    for i = 1, 16 do
-        turtle.getItemCount(i)
-        if turtle.getItemCount(i) == 0 then
-            return true
+    if turtle.getItemCount(15) ~= 0 then
+        turtle.select(16)
+        turtle.digUp()
+        turtle.placeUp()
+        for selectslot=0, 15 do
+            turtle.selectslot(selectslot)
+            turtle.dropUp()
         end
+        turtle.select(16)
+        turtle.digUp()
     end
-    return false
-end
-
-function MiningTurtle:dropOff()
-    print("DROP OFF")
 end
 
 function MiningTurtle:dig ()
     turtle.dig()
-    if self:isFull() then self:dropOff()
+    self:isFull()
     turtle.digUp()
-    if self:isFull() then self:dropOff()
+    self:isFull()
     turtle.digDown()
-    if self:isFull() then self:dropOff()
+    self:isFull()
 end
 
 function MiningTurtle:forward ()
