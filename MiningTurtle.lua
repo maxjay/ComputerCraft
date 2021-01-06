@@ -46,7 +46,7 @@ function MiningTurtle:turnRight ()
     self.direction = (self.direction + 1) % 4
 end
 
-function MiningTurtle:snakeTurn(flip):
+function MiningTurtle:snakeTurn(flip) ()
     if flip then
         self:turnRight()
         self:forward()
@@ -59,7 +59,7 @@ function MiningTurtle:snakeTurn(flip):
 end
 
 function MiningTurtle:snakeMineLayer ()
-    for i = 0, self.size//2, 1
+    for i = 0, math.floor(self.size/2)), 1
     do
         flip = false
         for j = self.size, 1, -1
@@ -72,7 +72,7 @@ function MiningTurtle:snakeMineLayer ()
         do 
             self:forward()
         end
-        if i ~= (self.size//2) - 1 then
+        if i ~= math.floor(self.size/2) - 1 then
             self:snakeTurn(flip)
         end
         flip = not flip
