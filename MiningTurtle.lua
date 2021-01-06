@@ -86,6 +86,8 @@ function MiningTurtle:snakeMine ()
         self:snakeMineLayer()
         self:turnLeft()
         self:dig()
+    end
+end
 
 mt = MiningTurtle:new(nil, turtle, 3)
 mt:forward()
