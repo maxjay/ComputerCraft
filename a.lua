@@ -44,8 +44,10 @@ function mine(size)
     do
         for i = size, 0, -1
         do
+            print("Forward", i)
             forward()
         end
+        print("Turn")
         zigZagTurn()
     end
 end
