@@ -38,6 +38,12 @@ function zigZagTurn(flip)
     end
 end
 
+function rotate180()
+    turtle.moveRight()
+    turtle.moveRight()
+    direction = (direction + 2) % 4
+end 
+
 function mine(size)
     forward()
     flip = true
@@ -59,6 +65,7 @@ function mine(size)
         if i == 1 then return end
         turtle.digDown()
         turtle.down()
+        rotate180()
         for n = size -1, 1, -1
         do
             forward()
