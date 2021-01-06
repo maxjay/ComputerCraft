@@ -33,7 +33,7 @@ function zigZagTurn()
         forward()
         moveRight()
         turtle.dig()
-    else if direction == 2 then
+    elseif direction == 2 then
         moveLeft()
         turtle.dig()
         forward()
