@@ -1,7 +1,7 @@
 direction = 0 --left = -1, right = +1
 x = 0
 y = 0
-size = arg[0] or 2
+size = 2
 
 function loc()
     print(x, y, direction)
