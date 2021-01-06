@@ -20,10 +20,10 @@ function MiningTurtle:goBackToOrigin ()
     end
     if (self.x > 0) then
         if (self.direction == 1) then
-            turtle.moveRight()
-            turtle.moveRight()
+            self:turnRight()
+            self:turnRight()
         elseif (self.direction ~= 3) then
-            turtle.moveRight()
+            self:turnRight()
         end
         while (self.x > 0)
         do
@@ -32,10 +32,10 @@ function MiningTurtle:goBackToOrigin ()
         end
     elseif (self.x < 0) then
         if (self.direction == 3) then
-            turtle.moveRight()
-            turtle.moveRight()
+            self:turnRight()
+            self:turnRight()
         elseif (self.direction ~= 1) then
-            turtle.moveRight()
+            self:turnRight()
         end
         while (self.x > 0)
         do
@@ -45,10 +45,10 @@ function MiningTurtle:goBackToOrigin ()
     end
     if (self.y > 0) then
         if (self.direction == 0) then
-            turtle.moveRight()
-            turtle.moveRight()
+            self:turnRight()
+            self:turnRight()
         elseif (self.direction ~= 2) then
-            turtle.moveRight()
+            self:turnRight()
         end
         while (self.y > 0)
         do
@@ -57,10 +57,10 @@ function MiningTurtle:goBackToOrigin ()
         end
     elseif (self.y < 0) then
         if (self.direction == 2) then
-            turtle.moveRight()
-            turtle.moveRight()
+            self:turnRight()
+            self:turnRight()
         elseif (self.direction ~= 0) then
-            turtle.moveRight()
+            self:turnRight()
         end
         while (self.y < 0)
         do
@@ -174,5 +174,9 @@ function MiningTurtle:snakeMine ()
 end
 
 mt = MiningTurtle:new(nil, turtle, 4)
-mt:snakeMine()
+mt:forward()
+mt:forward()
+mt:down()
+mt.z = mt.z - 1
+mt:goBackToOrigin()
 mt:getLocation()
