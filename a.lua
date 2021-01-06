@@ -47,7 +47,7 @@ end
 function mine(size)
     forward()
     flip = true
-    for i = size -1, 1, -1
+    for i = size, 1, -1
     do
         forward()
     end
