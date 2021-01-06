@@ -6,7 +6,7 @@ function MiningTurtle:new (o, turtle, size)
     self.__index = self
     self.x = 0
     self.y = 0
-    self.z = 70
+    self.z = 0
     self.direction = 0
     self.size = size or 4
     return o
@@ -83,15 +83,18 @@ function MiningTurtle:snakeMineLayer ()
 end
 
 function MiningTurtle:snakeMine ()
-    for i = 71, 0, -2
+    for i = 71, 5, -2
     do
-        z = i
         self:snakeMineLayer()
         self:turnLeft()
         self:dig()
         turtle.down()
         self:dig()
-        turtle.dig()
+        turtle.down()
+        self:dig()
+        turtle.down()
+        self:dig()
+        self.z = self.z - 3
     end
 end
 
