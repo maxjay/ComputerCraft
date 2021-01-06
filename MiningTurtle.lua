@@ -46,7 +46,7 @@ function MiningTurtle:turnRight ()
     self.direction = (self.direction + 1) % 4
 end
 
-function MiningTurtle:snakeTurn(flip) ()
+function MiningTurtle:snakeTurn(flip)
     if flip then
         self:turnRight()
         self:forward()
