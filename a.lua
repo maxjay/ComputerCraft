@@ -26,12 +26,12 @@ function forward()
     elseif direction == 3 then x = x - 1 end 
 end
 
-function zigZagTurn()
-    if direction == 0 then
+function zigZagTurn(flip)
+    if flip then
         moveRight()
         forward()
         moveRight()
-    elseif direction == 2 then
+    else then
         moveLeft()
         forward()
         moveLeft()
@@ -39,16 +39,15 @@ function zigZagTurn()
 end
 
 function mine(size)
-    forward()
-    for i = size, 1, -1
+    flip = true
+    for i = 2*(size-1), 1, -1
     do
-        for i = size, 1, -1
+        for i = size - 1, 1, -1
         do
-            print("Forward", i)
             forward()
         end
-        print("Turn")
-        zigZagTurn()
+    zigZagTurn(flip)
+    flip = not flip
     end
 end
 
