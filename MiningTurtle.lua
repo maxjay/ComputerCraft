@@ -24,13 +24,13 @@ end
 function MiningTurtle:forward ()
     self:dig()
     if self.direction == 0 then
-        self.y += 1
+        self.y = self.y + 1
     elseif self.direction == 2 then
-        self.y -= 1
+        self.y = self.y - 1
     elseif self.direction == 3 then
-        self.x -= 1
+        self.x = self.x - 1
     elseif self.direction == 1 then
-        self.x += 1
+        self.x = self.x + 1
     end
 end
 
