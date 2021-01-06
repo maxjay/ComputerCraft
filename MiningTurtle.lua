@@ -1,14 +1,15 @@
+MiningTurtle = {}
+
 function MiningTurtle:new (o, turtle, size)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.turtle = turtle
     self.x = 0
     self.y = 0
     self.z = 70
     self.direction = 0
     self.size = size or 4
-    return 0
+    return o
 end
 
 function MiningTurtle:getLocation ()
@@ -16,9 +17,9 @@ function MiningTurtle:getLocation ()
 end
 
 function MiningTurtle:dig ()
-    self.turtle:dig()
-    self.turtle.digUp()
-    self.turtle.digDown()
+    turtle.dig()
+    turtle.digUp()
+    turtle.digDown()
 end
 
 function MiningTurtle:forward ()
