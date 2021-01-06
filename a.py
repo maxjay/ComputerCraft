@@ -108,6 +108,7 @@ def snakeMineLayer(size=16):
         for j in range(size, 1, -1):
             #location()
             forward()
+        print(i, (size//2)-1)
         if i != (size//2)-1:
             snakeTurn(flip)
         flip = not flip

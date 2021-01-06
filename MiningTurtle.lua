@@ -83,12 +83,15 @@ function MiningTurtle:snakeMineLayer ()
 end
 
 function MiningTurtle:snakeMine ()
-    for i = 1, 0, -2
+    for i = 71, 0, -2
     do
         z = i
         self:snakeMineLayer()
         self:turnLeft()
         self:dig()
+        turtle.down()
+        self:dig()
+        turtle.dig()
     end
 end
 
