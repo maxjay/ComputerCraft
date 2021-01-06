@@ -59,7 +59,7 @@ function MiningTurtle:snakeTurn(flip)
 end
 
 function MiningTurtle:snakeMineLayer ()
-    for i = 0, math.floor(self.size/2)), 1
+    for i = 0, math.floor(self.size/2), 1
     do
         flip = false
         for j = self.size, 1, -1
