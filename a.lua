@@ -1,7 +1,7 @@
 direction = 0 --left = -1, right = +1
 x = 0
 y = 0
-max = 2
+size = arg[0] or 2
 
 function loc()
     print(x, y, direction)
@@ -42,6 +42,19 @@ function zigZagTurn()
     end
 end
 
+function mine(size)
+    turtle.dig()
+    for i = size, 1, -1
+    do
+        for i = size, 1, -1
+        do
+            forward()
+            turtle.dig()
+        end
+        turtle.zigZagTurn()
+    end
+end
+
 function resetDirection()
     while (direction > 0)
     do
@@ -63,17 +76,4 @@ function depositIntoChest()
 end
 
 print("Initialising")
-forward()
-loc()
-forward()
-loc()
-forward()
-loc()
-zigZagTurn()
-loc()
-forward()
-loc()
-forward()
-loc()
-zigZagTurn()
-loc()
+mine(size)
