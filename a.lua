@@ -29,22 +29,18 @@ end
 function zigZagTurn()
     if direction == 0 then
         moveRight()
-        turtle.dig()
         forward()
         moveRight()
-        turtle.dig()
     elseif direction == 2 then
         moveLeft()
-        turtle.dig()
         forward()
-        moveRight()
-        turtle.dig()
+        moveLeft()
     end
 end
 
 function mine(size)
-    turtle.dig()
-    for i = size, 0, -1
+    forward()
+    for i = size - 1, 0, -1
     do
         for i = size - 1, 0, -1
         do
