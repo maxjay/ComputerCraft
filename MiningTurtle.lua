@@ -82,7 +82,7 @@ function MiningTurtle:snakeMineLayer ()
 end
 
 function MiningTurtle:snakeMine ()
-    for i = 1, 0, -2
+    for i = 3, 0, -2
     do
         z = i
         self:snakeMineLayer()
@@ -92,5 +92,5 @@ function MiningTurtle:snakeMine ()
 end
 
 mt = MiningTurtle:new(nil, turtle, 3)
-mt:forward()
+mt:snakeMine()
 mt:getLocation()
