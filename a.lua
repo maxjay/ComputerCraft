@@ -21,9 +21,9 @@ function forward()
     turtle.dig()
     turtle.forward()
     if direction == 0 then y = y + 1
-    else if direction == 1 then x = x + 1
-    else if direction == 2 then y = y - 1
-    else if direction == 3 then x = x - 1 end 
+    elseif direction == 1 then x = x + 1
+    elseif direction == 2 then y = y - 1
+    elseif direction == 3 then x = x - 1 end 
 end
 
 function zigZagTurn()
