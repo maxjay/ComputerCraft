@@ -39,8 +39,8 @@ function zigZagTurn(flip)
 end
 
 function rotate180()
-    turtle.moveRight()
-    turtle.moveRight()
+    moveRight()
+    moveRight()
     direction = (direction + 2) % 4
 end 
 
