@@ -1,6 +1,7 @@
 direction = 0 --left = -1, right = +1
 x = 0
 y = 0
+z = 0
 size = 2
 
 function loc()
@@ -65,6 +66,7 @@ function mine(size)
         if i == 1 then return end
         turtle.digDown()
         turtle.down()
+        z =- 1
         rotate180()
         for n = size -1, 1, -1
         do
@@ -95,3 +97,4 @@ end
 
 print("Initialising")
 mine(size)
+loc()
