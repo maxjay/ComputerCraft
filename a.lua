@@ -9,12 +9,12 @@ end
 
 function moveRight()
     turtle.turnRight()
-    direction = direction +1
+    direction = (direction + 1) % 4 
 end
 
 function moveLeft()
     turtle.turnLeft()
-    direction = direction - 1
+    direction = (direction - 1) % 4 
 end
 
 function forward()
@@ -46,7 +46,7 @@ function mine(size)
     turtle.dig()
     for i = size, 0, -1
     do
-        for i = size, 0, -1
+        for i = size - 1, 0, -1
         do
             forward()
         end
