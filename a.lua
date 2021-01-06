@@ -40,9 +40,9 @@ end
 
 function mine(size)
     forward()
-    for i = size, 0, -1
+    for i = size, 1, -1
     do
-        for i = size, 0, -1
+        for i = size, 1, -1
         do
             print("Forward", i)
             forward()
