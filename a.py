@@ -5,7 +5,7 @@ z = 68
 direction = 1
 
 coords = [[x,y,z] for x in range(15, -1, -1) for y in range(15, -1, -1) for z in range(69, 0, -1)]
-print(coords)
+#print(coords)
 print(len(coords))
 t = turtle.Turtle()
 t.speed(0)
@@ -89,7 +89,7 @@ def snakeTurn(flip):
 
 def snakeMine(size=16):
     global z
-    for i in range(68, 0, -2):
+    for i in range(1, 0, -2):
         z = i
         snakeMineLayer(size)
         turnLeft()
@@ -110,7 +110,7 @@ def snakeMineLayer(size=16):
             snakeTurn(flip)
         flip = not flip
 
-snakeMine()
-print(coords)
+snakeMine(4)
+#print(coords)
 print(fuel)
 t.getscreen()._root.mainloop() 
