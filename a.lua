@@ -8,12 +8,12 @@ function loc()
 end
 
 function moveRight()
-    turtle.right()
+    turtle.turnRight()
     direction = direction +1
 end
 
 function moveLeft()
-    turtle.left()
+    turtle.turnLeft()
     direction = direction - 1
 end
 
