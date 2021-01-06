@@ -39,6 +39,7 @@ function zigZagTurn(flip)
 end
 
 function mine(size)
+    forward()
     flip = true
     for i = size -1, 1, -1
     do
@@ -46,12 +47,22 @@ function mine(size)
     end
     for i = size - 1, 1, -1
     do
-        zigZagTurn(flip)
-        for i = size - 1, 1, -1
+        for j = size - 1, 1, -1
+        do
+            zigZagTurn(flip)
+            for k = size - 1, 1, -1
+            do
+                forward()
+            end
+            flip = not flip
+        end
+        if i == 1 then return end
+        turtle.digDown()
+        turtle.down()
+        for n = size -1, 1, -1
         do
             forward()
         end
-        flip = not flip
     end
 end
 
