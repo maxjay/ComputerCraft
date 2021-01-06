@@ -24,6 +24,7 @@ end
 
 function MiningTurtle:forward ()
     self:dig()
+    turtle.forward()
     if self.direction == 0 then
         self.y = self.y + 1
     elseif self.direction == 2 then
@@ -35,6 +36,57 @@ function MiningTurtle:forward ()
     end
 end
 
-mt = MiningTurtle:new(nil, turtle, 4)
+function MiningTurtle:turnLeft ()
+    print("TURN LEFT")
+    self.direction = (self.direction - 1) % 4
+end
+
+function MiningTurtle:turnRight ()
+    print("TURN RIGHT")
+    self.direction = (self.direction + 1) % 4
+end
+
+function MiningTurtle:snakeTurn(flip):
+    if flip then
+        self:turnRight()
+        self:forward()
+        self:turnRight()
+    else
+        self:turnLeft()
+        self:forward()
+        self:turnLeft()
+    end
+end
+
+function MiningTurtle:snakeMineLayer ()
+    for i = 0, self.size//2, 1
+    do
+        flip = false
+        for j = self.size, 1, -1
+        do 
+            self:forward()
+        end
+        self:snakeTurn(flip)
+        flip = not flip
+        for j = self.size, 1, -1
+        do 
+            self:forward()
+        end
+        if i ~= (self.size//2) - 1 then
+            self:snakeTurn(flip)
+        end
+        flip = not flip
+    end
+end
+
+function MiningTurtle:snakeMine ()
+    for i = 1, 0, -2
+    do
+        z = i
+        self:snakeMineLayer()
+        self:turnLeft()
+        self:dig()
+
+mt = MiningTurtle:new(nil, turtle, 3)
 mt:forward()
 mt:getLocation()
