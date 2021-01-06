@@ -38,11 +38,13 @@ end
 
 function MiningTurtle:turnLeft ()
     print("TURN LEFT")
+    turtle.turnLeft()
     self.direction = (self.direction - 1) % 4
 end
 
 function MiningTurtle:turnRight ()
     print("TURN RIGHT")
+    turtle.turnRight()
     self.direction = (self.direction + 1) % 4
 end
 
