@@ -100,7 +100,7 @@ function MiningTurtle:snakeMineLayer ()
 end
 
 function MiningTurtle:snakeMine ()
-    for i = 71, 5, -2
+    for i = 71, 5, -3
     do
         self:snakeMineLayer()
         self:turnLeft()
