@@ -1,4 +1,5 @@
 MiningTurtle = {}
+modem = peripheral.wrap("left")
 
 function MiningTurtle:new (o, turtle, size)
     o = o or {}
@@ -10,6 +11,14 @@ function MiningTurtle:new (o, turtle, size)
     self.direction = 0
     self.size = size or 4
     return o
+end
+
+function MiningTurtle:broadcastDone() 
+    modem.transmit(69, 1, "Done")
+end
+
+function MiningTurtle:broadcastStatus()
+    modem.transmit(69, 1, "(" + self.x + ", " + self.y + ", " + self.z + ") " + turtle.getFuelLevel())
 end
 
 function MiningTurtle:goBackToOrigin ()
@@ -76,6 +85,7 @@ end
 
 function MiningTurtle:getLocation ()
     print("Location: ", self.x, self.y, self.z, "\tDirection:", self.direction)
+    return "Location: " + self.x, self.y, self.z, "\tDirection:", self.direction
 end
 
 function MiningTurtle:deposit()
@@ -88,6 +98,11 @@ function MiningTurtle:deposit()
     end
     turtle.select(16)
     turtle.digUp()
+end
+
+function MiningTurtle:liftChest()
+    turtle.select(16)
+    turtle.placeUp()
 end
 
 function MiningTurtle:isFull() 
@@ -193,8 +208,10 @@ function MiningTurtle:snakeMine ()
     self.z = self.z + 3
 end
 
-mt = MiningTurtle:new(nil, turtle, 4)
+mt = MiningTurtle:new(nil, turtle, 8)
 mt:snakeMine()
 mt:goBackToOrigin()
 mt:deposit()
+mt:liftChest()
+mt:broadcastDone()
 mt:getLocation()
