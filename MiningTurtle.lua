@@ -18,7 +18,7 @@ function MiningTurtle:broadcastDone()
 end
 
 function MiningTurtle:broadcastStatus()
-    modem.transmit(69, 1, "(" .. tostring(self.x) .. ", " .. tostring(self.y) .. ", " + tostring(self.z) .. ") " .. tostring(self.direction) .. " " .. tostring(turtle.getFuelLevel()) )
+    modem.transmit(69, 1, "(" .. tostring(self.x) .. ", " .. tostring(self.y) .. ", " .. tostring(self.z) .. ") " .. tostring(self.direction) .. " " .. tostring(turtle.getFuelLevel()) )
 end
 
 function MiningTurtle:goBackToOrigin ()
