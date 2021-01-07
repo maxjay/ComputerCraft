@@ -8,20 +8,76 @@ function Controller:new (o)
     self.y = 0
     self.z = 0
     self.direction = 0
-    self.size = size or 4
     return o
 end
 
-function MiningTurtle:dig ()
+function MiningTurtle:goBackToOrigin ()
+    while (self.z ~= 0) 
+    do
+        turtle.down()
+        self.z = self.z - 1
+    end
+    if (self.x > 0) then
+        if (self.direction == 1) then
+            self:turnRight()
+            self:turnRight()
+        elseif (self.direction == 0) then
+            self:turnLeft()
+        elseif (self.direction == 2) then
+            self:turnRight()
+        end
+        while (self.x ~= 0)
+        do
+            self:forward()
+        end
+    elseif (self.x < 0) then
+        if (self.direction == 3) then
+            self:turnRight()
+            self:turnRight()
+        elseif (self.direction == 2) then
+            self:turnLeft()
+        elseif (self.direction == 0) then
+            self:turnRight()
+        end
+        while (self.x ~= 0)
+        do
+            self:forward()
+        end
+    end
+    if (self.y > 0) then
+        if (self.direction == 0) then
+            self:turnRight()
+            self:turnRight()
+        elseif (self.direction == 3) then
+            self:turnLeft()
+        elseif (self.direction == 1) then
+            self:turnRight()
+        end
+        while (self.y ~= 0)
+        do
+            self:forward()
+        end
+    elseif (self.y < 0) then
+        if (self.direction == 2) then
+            self:turnRight()
+            self:turnRight()
+        elseif (self.direction == 1) then
+            self:turnLeft()
+        elseif (self.direction == 3) then
+            self:turnRight()
+        end
+        while (self.y ~= 0)
+        do
+            self:forward()
+        end
+    end
+end
+
+function Controller:dig ()
     while (turtle.detect())
     do
         turtle.dig()
     end
-    self:isFull()
-    turtle.digUp()
-    self:isFull()
-    turtle.digDown()
-    self:isFull()
 end
 
 function Controller:forward ()
@@ -49,3 +105,128 @@ function Controller:turnRight ()
     turtle.turnRight()
     self.direction = (self.direction + 1) % 4
 end
+
+function Controller:validate()
+    local turtles = 0
+    local chests = 0
+    for i = 1, 16, 1
+    do
+        item = turtle.getItemDetail(i)
+        if item ~= nil then
+            if item.name == "computercraft:turtle_expanded" then
+                turtles = turtles + 1
+            elseif item.name == "enderstorage:ender_storage" then
+                chests = item.count
+            end
+        end
+    end
+    if (turtle == 4 and chest == 4) then return true end
+    return false
+end 
+
+function Controller:cleanUp()
+    print("Collecting")
+    for j = 0, 3, 1
+        for i = 0, 7, 1
+        do
+            self:forward()
+        end
+        self:turnRight()
+    end
+    self:validate()
+end
+
+function Controller:selectTurtle()
+    for i = 1, 16, 1
+    do
+        item = turtle.getItemDetail(i)
+        if item ~= nil then
+            if item.name == "computercraft:turtle_expanded" then
+                turtle.select(i)
+                return true
+            end
+        end
+    end
+end
+
+function Controller:placeTurtle()
+    while (turtle.detectDown())
+    do
+        turtle.digDown()
+    end
+    self:selectTurtle()
+    turtle.placeDown()
+end
+
+function Controller:selectChest()
+    for i = 1, 16, 1
+    do
+        item = turtle.getItemDetail(i)
+        if item ~= nil then
+            if item.name == "enderstorage:ender_storage" then
+                turtle.select(i)
+                return true
+            end
+        end
+    end
+end
+
+function Controller:placeChest()
+    self:turnRight()
+    self:turnRight()
+    self:selectChest()
+    self:turnRight()
+    self:turnRight()
+end
+
+function Controller:up()
+    turtle.up()
+    self.z = self.z + 1
+end
+
+function Controller:orientate()
+    while (self.direction ~= 0)
+    do
+        self.moveLeft()
+    end
+end
+
+function Controller:setup()
+    self:up()
+    self:forward()
+
+    self:placeTurtle()
+    self:moveLeft()
+    self:forward()
+    self:placeChest()
+    for i = 0, 7, 1
+    do 
+        self:forward()
+    end
+    self:orientate()
+    self:placeTurtle()
+    self:forward()
+    self:placeChest()
+    for i = 0, 7, 1
+    do 
+        self:forward()
+    end
+    self:orientate()
+    self:placeTurtle()
+    self:moveRight()
+    self:forward()
+    self:placeChest()
+    for i = 0, 7, 1
+    do 
+        self:forward()
+    end
+    self:orientate()
+    self:placeTurtle()
+    self:moveRight()
+    self:moveRight()
+    self:forward()
+    self:goBackToOrigin()
+end
+
+con = Controller:new(nil)
+con:setup()
