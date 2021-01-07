@@ -78,6 +78,18 @@ function MiningTurtle:getLocation ()
     print("Location: ", self.x, self.y, self.z, "\tDirection:", self.direction)
 end
 
+function MiningTurtle:deposit()
+    turtle.select(16)
+    turtle.digUp()
+    turtle.placeUp()
+    for selectslot=1, 15, 1 do
+        turtle.select(selectslot)
+        turtle.dropUp()
+    end
+    turtle.select(16)
+    turtle.digUp()
+end
+
 function MiningTurtle:isFull() 
     if turtle.getItemCount(15) ~= 0 then
         turtle.select(16)
@@ -162,7 +174,7 @@ function MiningTurtle:snakeMineLayer ()
 end
 
 function MiningTurtle:snakeMine ()
-    for i = 71, 5, -3
+    for i = 71, 2, -3
     do
         self:snakeMineLayer()
         self:turnLeft()
@@ -180,4 +192,5 @@ end
 mt = MiningTurtle:new(nil, turtle, 4)
 mt:snakeMineLayer()
 mt:goBackToOrigin()
+mt:deposit()
 mt:getLocation()

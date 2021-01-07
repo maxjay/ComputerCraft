@@ -6,9 +6,9 @@ direction = 1
 
 coords = [[x,y,z] for x in range(15, -1, -1) for y in range(15, -1, -1) for z in range(69, 0, -1)]
 #print(coords)
-print(len(coords))
-t = turtle.Turtle()
-t.speed(0)
+#print(len(coords))
+#t = turtle.Turtle()
+#t.speed(0)
 x = y = 0
 z = 68
 fuel = 0
@@ -27,7 +27,7 @@ def dig():
         coordsToDig[0] -= 1
     elif direction == 1:
         coordsToDig[0] += 1
-    #print("Digging:", coordsToDig)
+    print("Digging:", coordsToDig)
     if coordsToDig not in coords:
         print("Inefficient!!!")
     else:
@@ -43,7 +43,7 @@ def forward():
     global x,y, fuel
     fuel += 1
     dig()
-    t.forward(20)
+    #t.forward(20)
     if direction == 0:
         y += 1
     elif direction == 2:
@@ -52,25 +52,25 @@ def forward():
         x -= 1
     elif direction == 1:
         x += 1
-    t.pensize(10)
-    t.pencolor("red")
-    t.fillcolor("red")
-    t.begin_fill()
-    t.circle(2)
-    t.end_fill()
-    t.pencolor("black")
-    t.pensize(1)
+    #t.pensize(10)
+    #t.pencolor("red")
+    #t.fillcolor("red")
+    #t.begin_fill()
+    #t.circle(2)
+    #t.end_fill()
+    #t.pencolor("black")
+    #t.pensize(1)
 
 def turnLeft():
     global direction, fuel
     fuel += 1
-    t.left(90)
+    #t.left(90)
     direction = (direction - 1) % 4
 
 def turnRight():
     global direction, fuel
     fuel += 1
-    t.right(90)
+    #t.right(90)
     direction = (direction + 1) % 4
 
 def snakeTurn(flip):
@@ -89,7 +89,7 @@ def snakeTurn(flip):
 
 def snakeMine(size=16):
     global z
-    for i in range(1, 0, -2):
+    for i in range(size, 0, -2):
         z = i
         snakeMineLayer(size)
         turnLeft()
@@ -113,7 +113,7 @@ def snakeMineLayer(size=16):
             snakeTurn(flip)
         flip = not flip
 
-snakeMine(4)
-#print(coords)
+snakeMine(16)
+print(coords)
 print(fuel)
-t.getscreen()._root.mainloop() 
+#t.getscreen()._root.mainloop() 
