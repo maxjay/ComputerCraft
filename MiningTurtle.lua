@@ -174,7 +174,7 @@ function MiningTurtle:snakeMineLayer ()
 end
 
 function MiningTurtle:snakeMine ()
-    for i = 71, 5, -3
+    for i = 71, 2, -3
     do
         self:snakeMineLayer()
         self:turnLeft()
@@ -187,6 +187,7 @@ function MiningTurtle:snakeMine ()
         self:dig()
         self.z = self.z - 3
     end
+    self.z = self.z + 3
 end
 
 mt = MiningTurtle:new(nil, turtle, 4)
