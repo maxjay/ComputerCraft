@@ -105,7 +105,10 @@ function MiningTurtle:isFull()
 end
 
 function MiningTurtle:dig ()
-    turtle.dig()
+    while (turtle.detect())
+    do
+        turtle.dig()
+    end
     self:isFull()
     turtle.digUp()
     self:isFull()
