@@ -18,7 +18,7 @@ function MiningTurtle:broadcastDone()
 end
 
 function MiningTurtle:broadcastStatus()
-    modem.transmit(69, 1, "(" + self.x + ", " + self.y + ", " + self.z + ") " + turtle.getFuelLevel())
+    modem.transmit(69, 1, "(" + self.x + ", " + self.y + ", " + self.z + ") " + self.direction + " " turtle.getFuelLevel())
 end
 
 function MiningTurtle:goBackToOrigin ()
@@ -85,7 +85,7 @@ end
 
 function MiningTurtle:getLocation ()
     print("Location: ", self.x, self.y, self.z, "\tDirection:", self.direction)
-    return "Location: " + self.x, self.y, self.z, "\tDirection:", self.direction
+    --return "Location: " + self.x, self.y, self.z, "\tDirection:", self.direction
 end
 
 function MiningTurtle:deposit()
@@ -132,6 +132,7 @@ function MiningTurtle:dig ()
 end
 
 function MiningTurtle:forward ()
+    self:broadcastStatus()
     self:dig()
     turtle.forward()
     if self.direction == 0 then
@@ -146,13 +147,13 @@ function MiningTurtle:forward ()
 end
 
 function MiningTurtle:turnLeft ()
-    print("TURN LEFT")
+    --print("TURN LEFT")
     turtle.turnLeft()
     self.direction = (self.direction - 1) % 4
 end
 
 function MiningTurtle:turnRight ()
-    print("TURN RIGHT")
+    --print("TURN RIGHT")
     turtle.turnRight()
     self.direction = (self.direction + 1) % 4
 end
@@ -175,7 +176,6 @@ function MiningTurtle:snakeMineLayer ()
     do
         for j = self.size, 2, -1
         do 
-            print(j)
             self:forward()
         end
         self:snakeTurn(flip)
