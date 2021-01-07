@@ -194,7 +194,7 @@ function MiningTurtle:snakeMine ()
 end
 
 mt = MiningTurtle:new(nil, turtle, 4)
-mt:snakeMineLayer()
+mt:snakeMine()
 mt:goBackToOrigin()
 mt:deposit()
 mt:getLocation()
