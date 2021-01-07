@@ -11,7 +11,7 @@ function Controller:new (o)
     return o
 end
 
-function MiningTurtle:goBackToOrigin ()
+function Controller:goBackToOrigin ()
     while (self.z ~= 0) 
     do
         turtle.down()
@@ -127,6 +127,7 @@ end
 function Controller:cleanUp()
     print("Collecting")
     for j = 0, 3, 1
+    do
         for i = 0, 7, 1
         do
             self:forward()
@@ -187,7 +188,7 @@ end
 function Controller:orientate()
     while (self.direction ~= 0)
     do
-        self.moveLeft()
+        self.turnLeft()
     end
 end
 
@@ -196,7 +197,7 @@ function Controller:setup()
     self:forward()
 
     self:placeTurtle()
-    self:moveLeft()
+    self:turnLeft()
     self:forward()
     self:placeChest()
     for i = 0, 7, 1
@@ -213,7 +214,7 @@ function Controller:setup()
     end
     self:orientate()
     self:placeTurtle()
-    self:moveRight()
+    self:turnRight()
     self:forward()
     self:placeChest()
     for i = 0, 7, 1
@@ -222,8 +223,8 @@ function Controller:setup()
     end
     self:orientate()
     self:placeTurtle()
-    self:moveRight()
-    self:moveRight()
+    self:turnRight()
+    self:turnRight()
     self:forward()
     self:goBackToOrigin()
 end
