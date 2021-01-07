@@ -1,5 +1,5 @@
 MiningTurtle = {}
-modem = peripheral.wrap("left")
+modem = peripheral.wrap("right")
 
 function MiningTurtle:new (o, turtle, size)
     o = o or {}
