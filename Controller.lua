@@ -176,6 +176,7 @@ function Controller:placeChest()
     self:turnRight()
     self:turnRight()
     self:selectChest()
+    turtle.place()
     self:turnRight()
     self:turnRight()
 end
