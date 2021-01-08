@@ -188,7 +188,7 @@ end
 function Controller:orientate()
     while (self.direction ~= 0)
     do
-        self.turnLeft()
+        self:turnLeft()
     end
 end
 
