@@ -90,13 +90,29 @@ function MiningTurtle:getLocation ()
     --return "Location: " + self.x, self.y, self.z, "\tDirection:", self.direction
 end
 
+function MiningTurtle:isEmpty()
+    for selectslot=1, 15, 1 do
+        if turtle.getItemCount(selectslot) ~= 0 then
+            return false
+        end
+    end
+    return true
+end
+        
+
 function MiningTurtle:deposit()
     turtle.select(16)
     turtle.digUp()
     turtle.placeUp()
-    for selectslot=1, 15, 1 do
-        turtle.select(selectslot)
-        turtle.dropUp()
+    while true
+    do
+        for selectslot=1, 15, 1 do
+            turtle.select(selectslot)
+            turtle.dropUp()
+        end
+        if self:isEmpty() do
+            break
+        end
     end
     turtle.select(16)
     turtle.digUp()
