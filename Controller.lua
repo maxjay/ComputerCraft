@@ -257,13 +257,13 @@ function Controller:wait()
     local event, modemSide, senderChannel, replyChannel, message, senderDistance = os.pullEvent("modem_message")
         print(message)
         if message == "Done" then
-            if senderChannel == 1 then 
+            if replyChannel == 1 then 
                 _1 = true 
-            elseif senderChannel == 2 then
+            elseif replyChannel == 2 then
                 _2 = true
-            elseif senderChannel == 3 then
+            elseif replyChannel == 3 then
                 _3 = true
-            elseif senderChannel == 4 then
+            elseif replyChannel == 4 then
                 _4 = true
             end
         end
