@@ -2,7 +2,7 @@ modem = peripheral.wrap("back")
 
 modem.open(69)
 modem.open(70)
-while true:
+while true
     do
     local event, modemSide, senderChannel, replyChannel, message, senderDistance = os.pullEvent("modem_message")
     if replyChannel == 1 then

@@ -251,18 +251,19 @@ function Controller:wait()
     local _2 = false
     local _3 = false
     local _4 = false
-    while not (_1 and _2 and _3 and _4):
+    while not (_1 and _2 and _3 and _4)
     do
     local event, modemSide, senderChannel, replyChannel, message, senderDistance = os.pullEvent("modem_message")
-    if message == "Done" then
-        if senderChannel == 1 then 
-            _1 = true 
-        elseif senderChannel == 2 then
-            _2 = true
-        elseif senderChannel == 3 then
-            _3 = true
-        elseif senderChannel == 4 then
-            _4 = true
+        if message == "Done" then
+            if senderChannel == 1 then 
+                _1 = true 
+            elseif senderChannel == 2 then
+                _2 = true
+            elseif senderChannel == 3 then
+                _3 = true
+            elseif senderChannel == 4 then
+                _4 = true
+            end
         end
     end
     modem.transmit(69, 70, "Chunk cleared")

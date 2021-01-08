@@ -1,3 +1,5 @@
+id = 1
+
 MiningTurtle = {}
 modem = peripheral.wrap("right")
 
@@ -14,11 +16,11 @@ function MiningTurtle:new (o, turtle, size)
 end
 
 function MiningTurtle:broadcastDone() 
-    modem.transmit(69, 1, "Done")
+    modem.transmit(69, id, "Done")
 end
 
 function MiningTurtle:broadcastStatus()
-    modem.transmit(69, 1, "(" .. tostring(self.x) .. ", " .. tostring(self.y) .. ", " .. tostring(self.z) .. ") " .. tostring(self.direction) .. " " .. tostring(turtle.getFuelLevel()) )
+    modem.transmit(69, id, "(" .. tostring(self.x) .. ", " .. tostring(self.y) .. ", " .. tostring(self.z) .. ") " .. tostring(self.direction) .. " " .. tostring(turtle.getFuelLevel()) )
 end
 
 function MiningTurtle:goBackToOrigin ()
