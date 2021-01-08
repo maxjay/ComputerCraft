@@ -71,6 +71,7 @@ function Controller:goBackToOrigin ()
         turtle.down()
         self.z = self.z - 1
     end
+    self:orientate()
 end
 
 function Controller:dig ()
@@ -133,8 +134,9 @@ function Controller:cleanUp()
             self:forward()
             turtle.digUp()
         end
-        self:turnRight()
+        self:turnLeft()
     end
+    self:goBackToOrigin()
     self:validate()
 end
 
@@ -236,3 +238,4 @@ end
 
 con = Controller:new(nil)
 con:setup()
+con:cleanUp()
