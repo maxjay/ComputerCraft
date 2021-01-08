@@ -9,4 +9,7 @@ while true
         break
     end
 end
+turtle.dipUp()
+turtle.transferTo(16)
+turtle.select(1)
 os.run({}, "MiningTurtle.lua")

@@ -127,6 +127,18 @@ function Controller:validate()
     return false
 end 
 
+function Controller:deposit()
+    turtle.select(16)
+    turtle.digUp()
+    turtle.placeUp()
+    for selectslot=1, 15, 1 do
+        turtle.select(selectslot)
+        turtle.dropUp()
+    end
+    turtle.select(16)
+    turtle.digUp()
+end
+
 function Controller:cleanUp()
     print("Collecting")
     self:forward()
@@ -274,5 +286,6 @@ end
 con = Controller:new(nil)
 con:setup()
 con:sendGo()
+con:deposit()
 con:wait()
 con:cleanUp()
