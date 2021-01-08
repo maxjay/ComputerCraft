@@ -126,30 +126,15 @@ function Controller:validate()
     if (turtle == 4 and chest == 4) then return true end
     return false
 end 
-
-function Controller:isEmpty()
-    for selectslot=1, 15, 1 do
-        if turtle.getItemCount(selectslot) ~= 0 then
-            return false
-        end
-    end
-    return true
-end
         
 
 function Controller:deposit()
     turtle.select(16)
     turtle.digUp()
     turtle.placeUp()
-    while true
-    do
-        for selectslot=1, 15, 1 do
-            turtle.select(selectslot)
-            turtle.dropUp()
-        end
-        if self:isEmpty() do
-            break
-        end
+    for selectslot=1, 15, 1 do
+        turtle.select(selectslot)
+        turtle.dropUp()
     end
     turtle.select(16)
     turtle.digUp()
