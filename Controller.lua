@@ -201,7 +201,7 @@ function Controller:setup()
     self:turnLeft()
     self:forward()
     self:placeChest()
-    for i = 0, 7, 1
+    for i = 0, 6, 1
     do 
         self:forward()
     end
@@ -218,7 +218,7 @@ function Controller:setup()
     self:turnRight()
     self:forward()
     self:placeChest()
-    for i = 0, 7, 1
+    for i = 0, 6, 1
     do 
         self:forward()
     end
