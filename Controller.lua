@@ -131,6 +131,7 @@ function Controller:cleanUp()
         for i = 0, 7, 1
         do
             self:forward()
+            turtle.digUp()
         end
         self:turnRight()
     end
