@@ -211,7 +211,7 @@ function MiningTurtle:snakeMine ()
 end
 
 mt = MiningTurtle:new(nil, turtle, 8)
-mt:snakeMineLayer()
+mt:snakeMine()
 mt:goBackToOrigin()
 mt:deposit()
 mt:liftChest()
