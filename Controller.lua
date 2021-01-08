@@ -12,11 +12,6 @@ function Controller:new (o)
 end
 
 function Controller:goBackToOrigin ()
-    while (self.z ~= 0) 
-    do
-        turtle.down()
-        self.z = self.z - 1
-    end
     if (self.x > 0) then
         if (self.direction == 1) then
             self:turnRight()
@@ -70,6 +65,11 @@ function Controller:goBackToOrigin ()
         do
             self:forward()
         end
+    end
+    while (self.z ~= 0) 
+    do
+        turtle.down()
+        self.z = self.z - 1
     end
 end
 
@@ -208,7 +208,7 @@ function Controller:setup()
     self:placeTurtle()
     self:forward()
     self:placeChest()
-    for i = 0, 7, 1
+    for i = 0, 6, 1
     do 
         self:forward()
     end
@@ -226,6 +226,9 @@ function Controller:setup()
     self:turnRight()
     self:turnRight()
     self:forward()
+    self:placeChest()
+    self:up()
+    self:up()
     self:goBackToOrigin()
 end
 
