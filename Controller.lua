@@ -1,7 +1,7 @@
 Controller = {}
 modem = peripheral.wrap("left")
 modem.open(69)
-
+modem.open(1)
 function Controller:new (o)
     o = o or {}
     setmetatable(o, self)
@@ -163,6 +163,7 @@ function Controller:placeTurtle()
     end
     self:selectTurtle()
     turtle.placeDown()
+    peripheral.call("bottom", "turnOn")
 end
 
 function Controller:selectChest()
@@ -254,6 +255,7 @@ function Controller:wait()
     while not (_1 and _2 and _3 and _4)
     do
     local event, modemSide, senderChannel, replyChannel, message, senderDistance = os.pullEvent("modem_message")
+        print(message)
         if message == "Done" then
             if senderChannel == 1 then 
                 _1 = true 
