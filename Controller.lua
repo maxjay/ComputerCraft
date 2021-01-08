@@ -241,9 +241,9 @@ end
 
 function Controller:sendGo()
     modem.transmit(1, 69, "Go")
-    modem.transmit(2, 69, "Go")
-    modem.transmit(3, 69, "Go")
-    modem.transmit(4, 69, "Go")
+    modem.transmit(1, 69, "Go")
+    modem.transmit(1, 69, "Go")
+    modem.transmit(1, 69, "Go")
 end
 
 function Controller:wait()
