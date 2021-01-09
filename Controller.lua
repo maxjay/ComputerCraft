@@ -315,20 +315,12 @@ function Controller:refuel ()
         end
     end
     turtle.down()
-    turtle.suckDown()
-    turtle.refuel()
-    turtle.dropDown()
-    turtle.turnRight()
-    turtle.turnRight()
-    turtle.turnRight()
-    turtle.turnRight()
-    turtle.suckDown()
-    turtle.refuel()
-    turtle.dropDown()
-    turtle.turnRight()
-    turtle.turnRight()
-    turtle.turnRight()
-    turtle.turnRight()
+    while turtle.getFuelLevel() <= 15000
+    do
+        turtle.suckDown()
+        turtle.refuel()
+        os.sleep(1)
+    end
     turtle.back()
     turtle.down()
     turtle.select(16)
