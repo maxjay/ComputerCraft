@@ -319,7 +319,7 @@ function Controller:refuel ()
     do
         turtle.suckDown()
         turtle.refuel()
-        os.sleep(1)
+        os.sleep(1.5)
     end
     turtle.back()
     turtle.down()
