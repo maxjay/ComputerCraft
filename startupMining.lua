@@ -17,7 +17,14 @@ while true
             turtle.suckDown()
             turtle.refuel()
             turtle.dropDown()
-            os.sleep(2)
+            turtle.turnRight()
+            turtle.turnRight()
+            turtle.turnRight()
+            turtle.turnRight()
+            turtle.turnRight()
+            turtle.turnRight()
+            turtle.turnRight()
+            turtle.turnRight()
         end
         modem.transmit(69, 1, "Refuel Done: " .. tostring(turtle.getFuelLevel()))
     end
