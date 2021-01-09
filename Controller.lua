@@ -288,6 +288,8 @@ function Controller:refuel ()
     turtle.select(16)
     turtle.place()
     turtle.up()
+    turtle.up()
+    turtle.forward()
     for i = 1, 15, 1
     do
         item = turtle.getItemDetail(i)
@@ -295,21 +297,21 @@ function Controller:refuel ()
             if item.name == "computercraft:turtle_expanded" then
                 turtle.select(i)
                 turtle.placeDown()
-                peripheral.call("forward", "turnOn")
+                peripheral.call("bottom", "turnOn")
                 modem.transmit(1, 69, "Refuel")
                 while true
                 do
                     local event, modemSide, senderChannel, replyChannel, message, senderDistance = os.pullEvent("modem_message")
                     print(message)
-                    print(string.sub(message, 1 11))
-                    if string.sub(message, 1 11) == "Refuel Done" then
-                        turtle.dig()
+                    print(string.sub(message, 1, 11))
+                    if string.sub(message, 1, 11) == "Refuel Done" then
+                        turtle.digDown()
                     end
                 end
             end
         end
     end
-    turtle.forward()
+    turtle.down()
     turtle.suckDown()
     turtle.refuel()
     turtle.dropDown()
