@@ -301,7 +301,8 @@ function Controller:refuel ()
                 do
                     local event, modemSide, senderChannel, replyChannel, message, senderDistance = os.pullEvent("modem_message")
                     print(message)
-                    if message == "Refuel Done" then
+                    print(string.sub(message, 1 11))
+                    if string.sub(message, 1 11) == "Refuel Done" then
                         turtle.dig()
                     end
                 end
