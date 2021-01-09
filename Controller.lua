@@ -328,13 +328,13 @@ function Controller:refuel ()
         end
     end
     turtle.down()
-    while turtle.getFuelLevel() <= 15000
+    while turtle.getFuelLevel() <= 20000
     do
         turtle.suckDown()
         turtle.refuel()
         self:selectBucket()
         turtle.dropDown()
-        os.sleep(1.5)
+        os.sleep(2)
     end
     turtle.back()
     turtle.down()
