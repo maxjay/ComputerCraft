@@ -157,7 +157,7 @@ function Controller:cleanUp()
 end
 
 function Controller:selectTurtle()
-    for i = 1, 16, 1
+    for i = 1, 15, 1
     do
         item = turtle.getItemDetail(i)
         if item ~= nil then
@@ -180,7 +180,7 @@ function Controller:placeTurtle()
 end
 
 function Controller:selectChest()
-    for i = 1, 16, 1
+    for i = 1, 15, 1
     do
         item = turtle.getItemDetail(i)
         if item ~= nil then
@@ -284,9 +284,56 @@ function Controller:wait()
     modem.transmit(69, 70, "Chunk cleared")
 end
 
+function Controller:refuel ()
+    turtle.select(16)
+    turtle.place()
+    turtle.up()
+    for i = 1, 15, 1
+    do
+        item = turtle.getItemDetail(i)
+        if item ~= nil then
+            if item.name == "computercraft:turtle_expanded" then
+                turtle.select(i)
+                turtle.placeDown()
+                peripheral.call("forward", "turnOn")
+                modem.transmit(1, 69, "Refuel")
+                while true
+                do
+                    local event, modemSide, senderChannel, replyChannel, message, senderDistance = os.pullEvent("modem_message")
+                    print(message)
+                    if message == "Refuel Done" then
+                        turtle.dig()
+                    end
+                end
+            end
+        end
+    end
+    turtle.forward()
+    turtle.suckDown()
+    turtle.refuel()
+    turtle.dropDown()
+    turtle.turnRight()
+    turtle.turnRight()
+    turtle.turnRight()
+    turtle.turnRight()
+    turtle.suckDown()
+    turtle.refuel()
+    turtle.dropDown()
+    turtle.turnRight()
+    turtle.turnRight()
+    turtle.turnRight()
+    turtle.turnRight()
+    turtle.back()
+    turtle.down()
+    turtle.select(16)
+    turtle.dig()
+    modem.transmit(69, 70, "Refuelled!!!")
+end
+
 con = Controller:new(nil)
 con:setup()
 con:sendGo()
 con:deposit()
 con:wait()
 con:cleanUp()
+con:refuel()
