@@ -16,6 +16,7 @@ while true
         do
             turtle.suckDown()
             turtle.refuel()
+            turtle.dropDown()
             os.sleep(1.5)
         end
         modem.transmit(69, 1, "Refuel Done: " .. tostring(turtle.getFuelLevel()))

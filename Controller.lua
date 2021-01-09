@@ -192,6 +192,19 @@ function Controller:selectChest()
     end
 end
 
+function Controller:selectBucket()
+    for i = 1, 15, 1
+    do
+        item = turtle.getItemDetail(i)
+        if item ~= nil then
+            if item.name == "minecraft:bucket" then
+                turtle.select(i)
+                return true
+            end
+        end
+    end
+end
+
 function Controller:placeChest()
     self:turnRight()
     self:turnRight()
@@ -319,6 +332,8 @@ function Controller:refuel ()
     do
         turtle.suckDown()
         turtle.refuel()
+        self:selectBucket()
+        turtle.dropDown()
         os.sleep(1.5)
     end
     turtle.back()
