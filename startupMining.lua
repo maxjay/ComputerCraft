@@ -12,7 +12,7 @@ while true
         os.run({}, "MiningTurtle.lua")
     elseif message == "Refuel" then
         modem.transmit(69, 1, "Refuelling: " .. tostring(turtle.getFuelLevel()))
-        while turtle.getFuelLevel() <= 15000
+        while turtle.getFuelLevel() <= 20000
         do
             turtle.suckDown()
             turtle.refuel()
